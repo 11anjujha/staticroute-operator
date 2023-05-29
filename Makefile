@@ -73,7 +73,7 @@ endif
 
 fvt: _calculate-build-number build-operator
 	docker tag $(REGISTRY_REPO)-amd64 $(REGISTRY_REPO)-amd64:$(CONTAINER_VERSION)
-	$(eval export REGISTRY_REPO=$(REGISTRY_REPO)-amd64)
+	$(eval export REGISTRY_REPO?=$(REGISTRY_REPO)-amd64)
 	@scripts/run-fvt.sh
 
 validate-code: lint lint-sh lint-yaml formatcheck vet sec test
